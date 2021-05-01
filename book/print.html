@@ -363,12 +363,12 @@ y  // =&gt; [1, 2, 3]
 <p>Lists are good for when we want a collection of one type, but sometimes we want
 to combine multiple values of different types. In this case tuples are a quick
 and convenient option.</p>
-<pre><code class="language-gleam">tuple(10, &quot;hello&quot;) // Type is tuple(Int, String)
-tuple(1, 4.2, [0]) // Type is tuple(Int, Float, List(Int))
+<pre><code class="language-gleam">#(10, &quot;hello&quot;) // Type is #(Int, String)
+#(1, 4.2, [0]) // Type is #(Int, Float, List(Int))
 </code></pre>
 <p>Once you have a tuple the values contained can be accessed using the <code>.0</code>
 accessor syntax.</p>
-<pre><code class="language-gleam">let my_tuple = tuple(&quot;one&quot;, &quot;two&quot;)
+<pre><code class="language-gleam">let my_tuple = #(&quot;one&quot;, &quot;two&quot;)
 let first = my_tuple.0   // &quot;one&quot;
 let seccond = my_tuple.1 // &quot;two&quot;
 </code></pre>
@@ -678,7 +678,7 @@ pub fn main() {
 <p>This may be useful for values that are used frequently in a module, but
 generally qualified imports are preferred as it makes it clearer where the
 value is defined.</p>
-<h2 id="the-gleam-module"><a class="header" href="#the-gleam-module">The <code>gleam</code> module</a></h2>
+<h2 id="the-prelude-module"><a class="header" href="#the-prelude-module">The prelude module</a></h2>
 <p>There is one module that is built into the language, the <code>gleam</code> prelude
 module.  By default its types and values are automatically imported into
 every module you write, but you can still chose to import it the regular way.
@@ -697,7 +697,7 @@ pub fn go() -&gt; gleam.Result(Int) {
   gleam.Ok(1)
 }
 </code></pre>
-<p>The <code>gleam</code> prelude module contains these types:</p>
+<p>The prelude module contains these types:</p>
 <ul>
 <li><code>BitString</code></li>
 <li><code>Bool</code></li>
@@ -1039,11 +1039,11 @@ specific type than the compiler would otherwise infer.</p>
 <h1 id="type-aliases"><a class="header" href="#type-aliases">Type aliases</a></h1>
 <p>Type aliases are a way of creating a new name for an existing type. This is
 useful when the name of the type may be long and awkward to type repeatedly.</p>
-<p>Here we are giving the type <code>List(tuple(String, String))</code> the new name
+<p>Here we are giving the type <code>List(#(String, String))</code> the new name
 <code>Headers</code>. This may be useful in a web application where we want to write
 multiple functions that return headers.</p>
 <pre><code class="language-gleam">pub type Headers =
-  List(tuple(String, String))
+  List(#(String, String))
 </code></pre>
 <h1 id="bit-strings"><a class="header" href="#bit-strings">Bit strings</a></h1>
 <p>Gleam has a convenient syntax for working directly with binary data called a
